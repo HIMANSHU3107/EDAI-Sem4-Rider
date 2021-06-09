@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "478330858298",
+    "firebase_url": "https://driver-c33f1-default-rtdb.firebaseio.com",
+    "project_id": "driver-c33f1",
+    "storage_bucket": "driver-c33f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478330858298:android:1536c6bc93fe4860af3e03",
+        "android_client_info": {
+          "package_name": "com.example.cab_driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478330858298-nubda4t3aaajt4sv9frkkm5v2ipki3uq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYMX83GHyj99396LM0UjBi7Q8OcPOvYvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478330858298-nubda4t3aaajt4sv9frkkm5v2ipki3uq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478330858298:android:bb27229583145d75af3e03",
+        "android_client_info": {
+          "package_name": "com.example.cab_rider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478330858298-nubda4t3aaajt4sv9frkkm5v2ipki3uq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYMX83GHyj99396LM0UjBi7Q8OcPOvYvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478330858298-nubda4t3aaajt4sv9frkkm5v2ipki3uq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
