@@ -37,6 +37,8 @@ class _MainPageState extends State<MainPage> {
   var geoLocator = Geolocator();
   Position currentPosition;
 
+  bool temp = false;
+
   void setupPositionLocator() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.bestForNavigation);
@@ -246,6 +248,7 @@ class _MainPageState extends State<MainPage> {
                               builder: (context) => SearchPage(),
                             ));
                         if (response == 'getDirection') {
+                          temp = true;
                           await getDirection();
                         }
                       },
@@ -281,11 +284,13 @@ class _MainPageState extends State<MainPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 22),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Row(
                       children: <Widget>[
                         Icon(
-                          OMIcons.home,
+                          OMIcons.localTaxi,
                           color: BrandColors.colorDimText,
                         ),
                         SizedBox(
@@ -294,49 +299,47 @@ class _MainPageState extends State<MainPage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text('Add Home'),
+                            temp == false
+                                ? Text('Add Home')
+                                : ElevatedButton(
+                                    onPressed: () {}, child: Text('Book ride')),
                             SizedBox(
                               height: 3,
                             ),
-                            Text('Your residential address',
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    color: BrandColors.colorDimText)),
                           ],
                         )
                       ],
-                    ),
-                    SizedBox(
-                      height: 10,
                     ),
                     BrandDivider(),
                     SizedBox(
                       height: 16,
                     ),
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          OMIcons.workOutline,
-                          color: BrandColors.colorDimText,
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    Visibility(
+                        visible: !temp,
+                        child: Row(
                           children: <Widget>[
-                            Text('Add work'),
-                            SizedBox(
-                              height: 3,
+                            Icon(
+                              OMIcons.workOutline,
+                              color: BrandColors.colorDimText,
                             ),
-                            Text('Your office address',
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    color: BrandColors.colorDimText)),
+                            SizedBox(
+                              width: 12,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text('Add work'),
+                                SizedBox(
+                                  height: 3,
+                                ),
+                                Text('Your office address',
+                                    style: TextStyle(
+                                        fontSize: 11,
+                                        color: BrandColors.colorDimText)),
+                              ],
+                            )
                           ],
-                        )
-                      ],
-                    ),
+                        )),
                   ],
                 ),
               ),
