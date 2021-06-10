@@ -1,5 +1,6 @@
 import 'package:cab_rider/dataproviders/appdata.dart';
 import 'package:cab_rider/helpers/helpermethods.dart';
+import 'package:cab_rider/screens/afterbookride.dart';
 import 'package:cab_rider/screens/searchpage.dart';
 import 'package:cab_rider/styles/styles.dart';
 import 'package:cab_rider/widgets/BrandDivider.dart';
@@ -302,7 +303,14 @@ class _MainPageState extends State<MainPage> {
                             temp == false
                                 ? Text('Add Home')
                                 : ElevatedButton(
-                                    onPressed: () {}, child: Text('Book ride')),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Afterbookride()));
+                                    },
+                                    child: Text('Book ride')),
                             SizedBox(
                               height: 3,
                             ),
