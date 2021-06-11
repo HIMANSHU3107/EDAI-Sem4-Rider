@@ -1,6 +1,7 @@
 import 'package:cab_rider/dataproviders/appdata.dart';
 import 'package:cab_rider/helpers/helpermethods.dart';
 import 'package:cab_rider/screens/afterbookride.dart';
+import 'package:cab_rider/screens/driverlist.dart';
 import 'package:cab_rider/screens/searchpage.dart';
 import 'package:cab_rider/styles/styles.dart';
 import 'package:cab_rider/widgets/BrandDivider.dart';
@@ -286,7 +287,7 @@ class _MainPageState extends State<MainPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Row(
                       children: <Widget>[
@@ -319,15 +320,12 @@ class _MainPageState extends State<MainPage> {
                       ],
                     ),
                     BrandDivider(),
-                    SizedBox(
-                      height: 16,
-                    ),
                     Visibility(
-                        visible: !temp,
+                        visible: temp,
                         child: Row(
                           children: <Widget>[
                             Icon(
-                              OMIcons.workOutline,
+                              OMIcons.person,
                               color: BrandColors.colorDimText,
                             ),
                             SizedBox(
@@ -336,14 +334,28 @@ class _MainPageState extends State<MainPage> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text('Add work'),
+                                temp == false
+                                    ? Text('Add work')
+                                    : ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Driverlist()),
+                                          );
+                                        },
+                                        child: Text('Available Drivers')),
                                 SizedBox(
                                   height: 3,
                                 ),
-                                Text('Your office address',
-                                    style: TextStyle(
-                                        fontSize: 11,
-                                        color: BrandColors.colorDimText)),
+                                Visibility(
+                                  visible: !temp,
+                                  child: Text('Your office address',
+                                      style: TextStyle(
+                                          fontSize: 11,
+                                          color: BrandColors.colorDimText)),
+                                ),
                               ],
                             )
                           ],

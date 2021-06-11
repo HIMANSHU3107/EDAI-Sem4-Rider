@@ -1,4 +1,4 @@
-import 'dart:io'  ;
+import 'dart:io';
 import 'dart:async';
 
 import 'package:cab_rider/dataproviders/appdata.dart';
@@ -16,38 +16,40 @@ Future<void> main() async {
     name: 'db2',
     options: Platform.isIOS || Platform.isMacOS
         ? const FirebaseOptions(
-      appId: '1:784303276461:ios:e074496838992edfd82124',
-      apiKey: 'AIzaSyCM-RJyPvjmEFEi5RInptmaFCfgjDIELCA',
-      projectId: 'flutter-firebase-plugins',
-      messagingSenderId: '784303276461',
-      databaseURL: 'https://geetaxi-24ea3-default-rtdb.europe-west1.firebasedatabase.app',
-    )
+            appId: '1:784303276461:ios:e074496838992edfd82124',
+            apiKey: 'AIzaSyCM-RJyPvjmEFEi5RInptmaFCfgjDIELCA',
+            projectId: 'flutter-firebase-plugins',
+            messagingSenderId: '784303276461',
+            databaseURL:
+                'https://geetaxi-24ea3-default-rtdb.europe-west1.firebasedatabase.app',
+          )
         : const FirebaseOptions(
-      appId: '1:784303276461:android:0666fe7d2a396070d82124',
-      apiKey: 'AIzaSyB-DXDM28-apXG86HbxwKu6Q7ZI7V0BqS4',
-      messagingSenderId: '297855924061',
-      projectId: 'flutter-firebase-plugins',
-      databaseURL: 'https://geetaxi-24ea3-default-rtdb.europe-west1.firebasedatabase.app',
-    ),
+            appId: '1:784303276461:android:0666fe7d2a396070d82124',
+            apiKey: 'AIzaSyB-DXDM28-apXG86HbxwKu6Q7ZI7V0BqS4',
+            messagingSenderId: '297855924061',
+            projectId: 'flutter-firebase-plugins',
+            databaseURL: 'https://driver-c33f1-default-rtdb.firebaseio.com/',
+          ),
   );
-runApp(MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(create: (context)=> AppData(),
+    return ChangeNotifierProvider(
+      create: (context) => AppData(),
       child: MaterialApp(
-        theme: ThemeData(fontFamily: 'Brand-Regular',
+        theme: ThemeData(
+          fontFamily: 'Brand-Regular',
           primarySwatch: Colors.blue,
         ),
         initialRoute: MainPage.id,
         routes: {
           RegistrationPage.id: (context) => RegistrationPage(),
-          LoginPage.id:(context) => LoginPage(),
-          MainPage.id:(context) => MainPage()
-
+          LoginPage.id: (context) => LoginPage(),
+          MainPage.id: (context) => MainPage()
         },
       ),
     );
