@@ -6,7 +6,6 @@ import 'package:cab_rider/helpers/requesthelper.dart';
 import 'package:cab_rider/widgets/BrandDivider.dart';
 import 'package:cab_rider/widgets/PredictionTile.dart';
 import 'package:flutter/material.dart';
-import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
@@ -175,8 +174,9 @@ class _SearchPageState extends State<SearchPage> {
           ),
           (destinationPredictionList.length > 0)
               ? Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListView.separated(padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.separated(
+                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                     itemBuilder: (context, index) {
                       return PredictionTile(
                           prediction: destinationPredictionList[index]);
@@ -187,7 +187,7 @@ class _SearchPageState extends State<SearchPage> {
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
                   ),
-              )
+                )
               : Container(),
         ],
       ),

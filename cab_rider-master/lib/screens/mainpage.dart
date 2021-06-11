@@ -7,7 +7,6 @@ import 'package:cab_rider/styles/styles.dart';
 import 'package:cab_rider/widgets/BrandDivider.dart';
 import 'package:cab_rider/brand_colors.dart';
 import 'package:cab_rider/widgets/ProgressDialog.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';

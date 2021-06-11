@@ -1,6 +1,5 @@
 import 'package:cab_rider/brand_colors.dart';
 import 'package:cab_rider/screens/loginpage.dart';
-import 'package:cab_rider/screens/mainpage.dart';
 import 'package:cab_rider/widgets/ProgressDialog.dart';
 import 'package:cab_rider/widgets/TaxiButton.dart';
 import 'package:connectivity/connectivity.dart';
@@ -22,7 +21,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
   void showSnackBar(String title) {
-    Get.snackbar(title,title);
+    Get.snackbar(title, title);
     /*
     final snackbar = SnackBar(
         content: Text(
