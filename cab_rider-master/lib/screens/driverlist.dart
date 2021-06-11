@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 
 class Driverlist extends StatefulWidget {
   const Driverlist({key}) : super(key: key);
@@ -152,6 +153,19 @@ class _DriverlistState extends State<Driverlist> {
                                         },
                                         icon: Icon(
                                           Icons.call,
+                                          size: 30.0,
+                                        )),
+                                    IconButton(
+                                        /*onPressed: () async {
+                                          FlutterPhoneDirectCaller.callNumber(
+                                              lists[index]["phone"]);
+                                        },*/
+                                        onPressed: () {
+                                          FlutterOpenWhatsapp.sendSingleMessage(
+                                              "+91" + numbertext, "Hello");
+                                        },
+                                        icon: Icon(
+                                          Icons.chat,
                                           size: 30.0,
                                         ))
                                   ],
