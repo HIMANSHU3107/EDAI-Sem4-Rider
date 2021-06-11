@@ -2,6 +2,10 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
+import 'dart:math' show cos, sqrt, asin;
+
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Driverlist extends StatefulWidget {
   const Driverlist({key}) : super(key: key);
@@ -17,6 +21,11 @@ class _DriverlistState extends State<Driverlist> {
   List avai_driver_list = [];
   List uid_drivers = [];
   List uid_available_drivers = [];
+
+  bool state = false;
+
+  String distance = '000.00';
+
   TextEditingController _numberCtrl = new TextEditingController();
   @override
   void initState() {
@@ -42,6 +51,17 @@ class _DriverlistState extends State<Driverlist> {
             values.forEach((key, values) {
               lists.add(values);
             });
+
+            /* valuesAvaiDrivers.forEach((key, value) {
+              avai_driver_list.add(valuesAvaiDrivers);
+            }); */
+
+            uid_available_drivers = valuesAvaiDrivers.keys.toList();
+
+            //print(avai_driver_list);
+            //print(avai_driver_list.toSet().elementAt(0).);
+            //print(avai_driver_list.toString().substring(52, 62));
+            print(valuesAvaiDrivers['1gFxyofcSdSWxqx6ZEa2o0W9y2r1']['l'][0]);
 
             return values.isEmpty
                 ? Scaffold(
@@ -82,7 +102,7 @@ class _DriverlistState extends State<Driverlist> {
                                       icon: Image.network(
                                           "https://png.pngtree.com/png-vector/20190321/ourmid/pngtree-vector-users-icon-png-image_856952.jpg"),
                                       iconSize: 50,
-                                      onPressed: () {
+                                      onPressed: () async {
                                         showDialog(
                                             context: context,
                                             builder: (_) => new AlertDialog(
@@ -138,6 +158,40 @@ class _DriverlistState extends State<Driverlist> {
                                                         style: TextStyle(
                                                           fontSize: 20.0,
                                                         )),
+                                                    SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    TextButton(
+                                                        onPressed: () async {
+                                                          distance = calculateDistance(
+                                                                  valuesAvaiDrivers[
+                                                                          uid_available_drivers[
+                                                                              index]]
+                                                                      ['l'][0],
+                                                                  valuesAvaiDrivers[
+                                                                          uid_available_drivers[
+                                                                              index]]
+                                                                      ['l'][1])
+                                                              .toString();
+                                                        },
+                                                        child: Text(
+                                                            'Get Driver distance')),
+                                                    SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    Text(
+                                                        "Distance from Driver:",
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            color:
+                                                                Colors.blue)),
+                                                    Text(
+                                                        distance.substring(
+                                                                0, 5) +
+                                                            " Km",
+                                                        style: TextStyle(
+                                                          fontSize: 20.0,
+                                                        )),
                                                   ],
                                                 )));
                                       },
@@ -179,5 +233,26 @@ class _DriverlistState extends State<Driverlist> {
           }
           return CircularProgressIndicator();
         });
+  }
+
+  Future<double> calculateDistance(lat1, lon1) async {
+    Position currentPosition;
+
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.bestForNavigation);
+    currentPosition = position;
+    LatLng pos = LatLng(position.latitude, position.longitude);
+
+    double lat2 = pos.latitude.toDouble();
+    double lon2 = pos.longitude.toDouble();
+
+    var p = 0.017453292519943295;
+    var c = cos;
+    var a = 0.5 -
+        c((lat2 - lat1) * p) / 2 +
+        c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
+    print(12742 * asin(sqrt(a)));
+    distance = (12742 * asin(sqrt(a))).toString();
+    return 12742 * asin(sqrt(a));
   }
 }
