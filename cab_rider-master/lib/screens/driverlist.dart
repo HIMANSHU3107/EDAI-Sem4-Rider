@@ -10,9 +10,11 @@ class Driverlist extends StatefulWidget {
 }
 
 class _DriverlistState extends State<Driverlist> {
-  final dbRef = FirebaseDatabase.instance.reference().child("drivers");
+  final dbRef = FirebaseDatabase.instance.reference();
   String numbertext;
   List lists = [];
+  List uid_drivers = [];
+  List uid_available_drivers = [];
   TextEditingController _numberCtrl = new TextEditingController();
   @override
   void initState() {
@@ -26,10 +28,17 @@ class _DriverlistState extends State<Driverlist> {
         builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
           if (snapshot.hasData) {
             lists.clear();
-            Map<dynamic, dynamic> values = snapshot.data.value;
+            Map<dynamic, dynamic> values = snapshot.data.value['drivers'];
+            Map<dynamic, dynamic> values_avai_drivers =
+                snapshot.data.value['driversAvailable'];
             values.forEach((key, values) {
               lists.add(values);
             });
+            uid_drivers = values.keys.toList();
+            uid_available_drivers = values_avai_drivers.keys.toList();
+            print(values[uid_available_drivers[0]]["fullname"]);
+            print(uid_available_drivers);
+
             return new ListView.builder(
                 shrinkWrap: true,
                 itemCount: lists.length,
