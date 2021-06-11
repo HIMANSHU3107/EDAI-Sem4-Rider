@@ -122,7 +122,7 @@ class _DriverlistState extends State<Driverlist> {
                                 IconButton(
                                     onPressed: () async {
                                       FlutterPhoneDirectCaller.callNumber(
-                                          _numberCtrl.text);
+                                          lists[index]["phone"]);
                                     },
                                     icon: Icon(
                                       Icons.call,
