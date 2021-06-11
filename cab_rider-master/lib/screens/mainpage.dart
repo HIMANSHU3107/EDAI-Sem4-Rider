@@ -286,37 +286,7 @@ class _MainPageState extends State<MainPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          OMIcons.localTaxi,
-                          color: BrandColors.colorDimText,
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            temp == false
-                                ? Text('Add Home')
-                                : ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Afterbookride()));
-                                    },
-                                    child: Text('Book ride')),
-                            SizedBox(
-                              height: 3,
-                            ),
-                          ],
-                        )
-                      ],
+                      height: 30,
                     ),
                     BrandDivider(),
                     Visibility(
