@@ -40,6 +40,7 @@ class _DriverlistState extends State<Driverlist> {
           if (snapshot.hasData) {
             lists.clear();
             Map<dynamic, dynamic> values = snapshot.data.value['drivers'];
+
             Map<dynamic, dynamic> valuesAvaiDrivers =
                 snapshot.data.value['driversAvailable'];
 
@@ -55,13 +56,14 @@ class _DriverlistState extends State<Driverlist> {
             /* valuesAvaiDrivers.forEach((key, value) {
               avai_driver_list.add(valuesAvaiDrivers);
             }); */
-
-            uid_available_drivers = valuesAvaiDrivers.keys.toList();
+            if (valuesAvaiDrivers != null) {
+              uid_available_drivers = valuesAvaiDrivers.keys.toList();
+            }
 
             //print(avai_driver_list);
             //print(avai_driver_list.toSet().elementAt(0).);
             //print(avai_driver_list.toString().substring(52, 62));
-            print(valuesAvaiDrivers['1gFxyofcSdSWxqx6ZEa2o0W9y2r1']['l'][0]);
+            //print(valuesAvaiDrivers['1gFxyofcSdSWxqx6ZEa2o0W9y2r1']['l'][0]);
 
             return values.isEmpty
                 ? Scaffold(
